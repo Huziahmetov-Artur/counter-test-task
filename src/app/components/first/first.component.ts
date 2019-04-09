@@ -16,6 +16,7 @@ export class FirstComponent extends BaseClass implements OnInit {
 	public firstCount: number;
 	public secondCount: number;
 	private subToStream: Subscription;
+	public testSub = this.store.pipe(select(getFirstCount));
 	constructor(private store: Store<AppState>) {
 		super();
 	}
@@ -23,8 +24,6 @@ export class FirstComponent extends BaseClass implements OnInit {
 	ngOnInit() {
 		this.sub = this.store.pipe(select(getFirstCount)).subscribe((count: number) => (this.firstCount = count));
 		this.sub = this.store.pipe(select(getSecondCount)).subscribe((count: number) => (this.secondCount = count));
-
-		console.log(this.firstCount);
 	}
 
 	public start(): void {

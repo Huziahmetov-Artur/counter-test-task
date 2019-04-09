@@ -1,35 +1,28 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Store, StoreModule } from '@ngrx/store';
+import * as fromRoot from './reducers';
+import * as counterActions from './actions';
+import { FirstComponent } from './components/first/first.component';
+import { SecondComponent } from './components/second/second.component';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+	let component: AppComponent;
+	let fixture: ComponentFixture<AppComponent>;
+	let store: Store<fromRoot.AppState>;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
+	beforeEach(
+		async(() => {
+			TestBed.configureTestingModule({
+				imports: [ StoreModule.forRoot(fromRoot.reducers) ],
+				declarations: [ AppComponent, FirstComponent, SecondComponent ]
+			}).compileComponents();
+		})
+	);
 
-  it(`should have as title 'counter-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('counter-app');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to counter-app!');
-  });
+	it('should create the app', () => {
+		const fixture = TestBed.createComponent(AppComponent);
+		const app = fixture.debugElement.componentInstance;
+		expect(app).toBeTruthy();
+	});
 });
