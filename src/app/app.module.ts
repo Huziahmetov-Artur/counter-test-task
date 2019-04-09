@@ -7,11 +7,18 @@ import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second/second.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { CounterEffects } from './effects';
 
 const componets = [ FirstComponent, SecondComponent ];
 @NgModule({
 	declarations: [ AppComponent, ...componets ],
-	imports: [ BrowserModule, AppRoutingModule, StoreModule.forRoot(reducers) ],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		StoreModule.forRoot(reducers),
+		EffectsModule.forRoot([ CounterEffects ])
+	],
 	providers: [],
 	bootstrap: [ AppComponent ]
 })

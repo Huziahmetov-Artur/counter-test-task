@@ -4,3 +4,6 @@
 <ng-container *ngIf="(secondCount | async) as num">
     <input value={{num}}>
 </ng-container>
+
+<button (click)="start()">Start</button>
+<button (click)="stop()">Stop</button>
