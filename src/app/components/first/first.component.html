@@ -1,0 +1,6 @@
+<ng-container *ngIf="(firstCount | async) as num">
+  <input value={{num}}>
+</ng-container>
+<ng-container *ngIf="(secondCount | async) as num">
+    <input value={{num}}>
+</ng-container>
