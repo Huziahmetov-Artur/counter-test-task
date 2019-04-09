@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
 	selector: 'app-second',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: [ './second.component.scss' ]
 })
 export class SecondComponent implements OnInit {
+	@Input() firstCount: number;
+	@Input() secondCount: number;
 	constructor() {}
 
 	ngOnInit() {}

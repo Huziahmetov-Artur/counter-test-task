@@ -1,11 +1,19 @@
 @import '../../../scss/colors.scss';
 
-.red {
-	border: 1px solid red;
-	color: $red;
-}
+.input-container {
+	margin: 30px 0;
 
-.blue {
-	border: 1px solid blue;
-	color: $blue;
+	button {
+		margin: 5px;
+	}
+
+	.red {
+		border: 1px solid red;
+		color: $red;
+	}
+
+	.blue {
+		border: 1px solid blue;
+		color: $blue;
+	}
 }

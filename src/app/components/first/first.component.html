@@ -1,9 +1,19 @@
-<ng-container *ngIf="firstCount !== 'undefined'">
-  <input [ngClass]="firstCount <= 0 ? 'red' : 'blue'" value={{firstCount}}>
-</ng-container>
-<ng-container *ngIf="secondCount  !== 'undefined'">
-    <input [ngClass]="secondCount > 0 ? 'blue' : 'red'" value={{secondCount}}>
-</ng-container>
+<div class="input-container">
+  <p>First Component</p>
+  <ng-container *ngIf="firstCount !== 'undefined'">
+    <input [ngClass]="firstCount <= 0 ? 'red' : 'blue'" value={{firstCount}}>
+  </ng-container>
+  <ng-container *ngIf="secondCount  !== 'undefined'">
+      <input [ngClass]="secondCount > 0 ? 'blue' : 'red'" value={{secondCount}}>
+  </ng-container>
 
-<button (click)="start()">Start</button>
-<button (click)="stop()">Stop</button>
+  <div>
+      <button (click)="start()">Start</button>
+      <button (click)="stop()">Stop</button>   
+  </div>
+</div>
+
+<div class="input-container">
+    <p>Second Component</p>
+    <app-second [firstCount]="firstCount" [secondCount]="secondCount"></app-second>
+</div>
