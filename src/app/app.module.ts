@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second/second.component';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { CounterEffects } from './effects';
@@ -17,7 +18,10 @@ const componets = [ FirstComponent, SecondComponent ];
 		BrowserModule,
 		AppRoutingModule,
 		StoreModule.forRoot(reducers),
-		EffectsModule.forRoot([ CounterEffects ])
+		EffectsModule.forRoot([ CounterEffects ]),
+		StoreDevtoolsModule.instrument({
+			maxAge: 5
+		})
 	],
 	providers: [],
 	bootstrap: [ AppComponent ]
