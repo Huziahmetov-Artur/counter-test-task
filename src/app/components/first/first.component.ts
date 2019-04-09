@@ -9,17 +9,17 @@ import { Change } from './../../actions';
 @Component({
 	selector: 'app-first',
 	templateUrl: './first.component.html',
-	styleUrls: [ './first.component.sass' ]
+	styleUrls: [ './first.component.scss' ]
 })
 export class FirstComponent implements OnInit {
-	public firstCount: Observable<number>;
-	public secondCount: Observable<number>;
+	public firstCount: number;
+	public secondCount: number;
 	private sub: Subscription;
 	constructor(private store: Store<AppState>) {}
 
 	ngOnInit() {
-		this.firstCount = this.store.pipe(select(getFirstCount));
-		this.secondCount = this.store.pipe(select(getSecondCount));
+		this.store.pipe(select(getFirstCount)).subscribe((count: number) => (this.firstCount = count));
+		this.store.pipe(select(getSecondCount)).subscribe((count: number) => (this.secondCount = count));
 
 		console.log(this.firstCount);
 	}

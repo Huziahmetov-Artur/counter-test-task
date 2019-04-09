@@ -1,8 +1,8 @@
-<ng-container *ngIf="(firstCount | async) as num">
-  <input value={{num}}>
+<ng-container *ngIf="firstCount !== 'undefined'">
+  <input [ngClass]="firstCount <= 0 ? 'red' : 'blue'" value={{firstCount}}>
 </ng-container>
-<ng-container *ngIf="(secondCount | async) as num">
-    <input value={{num}}>
+<ng-container *ngIf="secondCount  !== 'undefined'">
+    <input [ngClass]="secondCount > 0 ? 'blue' : 'red'" value={{secondCount}}>
 </ng-container>
 
 <button (click)="start()">Start</button>

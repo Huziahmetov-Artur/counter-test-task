@@ -1,0 +1,11 @@
+@import '../../../scss/colors.scss';
+
+.red {
+	border: 1px solid red;
+	color: $red;
+}
+
+.blue {
+	border: 1px solid blue;
+	color: $blue;
+}
