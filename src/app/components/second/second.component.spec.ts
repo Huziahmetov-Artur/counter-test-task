@@ -20,13 +20,6 @@ describe('SecondComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('input value equal Input() value', () => {
-		component.firstCount = -5;
-		fixture.detectChanges();
-		const el = fixture.debugElement.query(By.css('#firstInput')).nativeElement.value;
-		expect(el).toEqual('-5');
-	});
-
 	it('Second component should create', () => {
 		expect(component).toBeTruthy();
 	});

@@ -8,8 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second/second.component';
-import { reducers } from './reducers';
-import { CounterEffects } from './effects';
+import { reducers } from './feature/reducers';
+import { CounterEffects } from './feature/effects/effect.counter';
 
 const componets = [ FirstComponent, SecondComponent ];
 @NgModule({

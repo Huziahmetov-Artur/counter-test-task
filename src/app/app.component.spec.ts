@@ -1,8 +1,7 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { Store, StoreModule } from '@ngrx/store';
-import * as fromRoot from './reducers';
-import * as counterActions from './actions';
+import * as fromRoot from './feature/reducers';
 import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second/second.component';
 

@@ -1,18 +1,15 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FirstComponent } from './first.component';
 import { SecondComponent } from './../second/second.component';
 import { Store, StoreModule } from '@ngrx/store';
-import * as fromRoot from '../../reducers';
-import * as counterActions from '../../actions';
-import { By } from '@angular/platform-browser';
-import { getFirstCount } from 'src/app/selectors';
+import * as fromRoot from '../../feature/reducers';
+import * as counterActions from '../../feature/actions/counter.actions';
 
 describe('FirstComponent', () => {
 	let component: FirstComponent;
 	let fixture: ComponentFixture<FirstComponent>;
 	let store: Store<fromRoot.AppState>;
-	let compEl: HTMLElement;
 
 	beforeEach(
 		async(() => {
@@ -32,18 +29,10 @@ describe('FirstComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('should display counter value', () => {
-		expect(component.secondCount).toEqual(10);
-	});
-
-	it('should display counter value', () => {
-		expect(component.firstCount).toEqual(-5);
-	});
-
-	it('should display counter value', () => {
+	it('first value after increment action must be -4', () => {
 		const action = new counterActions.Increment();
 		store.dispatch(action);
-		component.testSub.subscribe((value) => {
+		component.firstCount.subscribe((value) => {
 			expect(value).toEqual(-4);
 		});
 	});

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable, Subscription, interval } from 'rxjs';
+import { Subscription, interval, Observable } from 'rxjs';
 
-import { AppState } from './../../reducers';
-import { getFirstCount, getSecondCount } from 'src/app/selectors';
-import { Change } from './../../actions';
+import { AppState } from '../../feature/reducers';
+
 import { BaseClass } from 'src/app/base-class';
+import { getFirstCount, getSecondCount } from 'src/app/feature/selectors/selector.counter';
+import { Change } from 'src/app/feature/actions/counter.actions';
 
 @Component({
 	selector: 'app-first',
@@ -13,26 +14,34 @@ import { BaseClass } from 'src/app/base-class';
 	styleUrls: [ './first.component.scss' ]
 })
 export class FirstComponent extends BaseClass implements OnInit {
-	public firstCount: number;
-	public secondCount: number;
+	public firstCount: Observable<number>;
+	public secondCount: Observable<number>;
 	private subToStream: Subscription;
-	public testSub = this.store.pipe(select(getFirstCount));
+
 	constructor(private store: Store<AppState>) {
 		super();
 	}
 
 	ngOnInit() {
-		this.sub = this.store.pipe(select(getFirstCount)).subscribe((count: number) => (this.firstCount = count));
-		this.sub = this.store.pipe(select(getSecondCount)).subscribe((count: number) => (this.secondCount = count));
+		this.firstCount = this.store.pipe(select(getFirstCount));
+		this.secondCount = this.store.pipe(select(getSecondCount));
+	}
+
+	test(firstCount) {
+		console.log(firstCount);
 	}
 
 	public start(): void {
-		this.subToStream = interval(1000).subscribe(() => {
+		if (this.subToStream) {
+			return;
+		}
+		this.sub = this.subToStream = interval(1000).subscribe(() => {
 			this.store.dispatch(new Change());
 		});
 	}
 
 	public stop(): void {
 		this.subToStream.unsubscribe();
+		this.subToStream = null;
 	}
 }

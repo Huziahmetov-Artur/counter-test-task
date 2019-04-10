@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { CounterActionTypes } from '../actions';
+import { CounterActionTypes } from '../actions/counter.actions';
 
 export interface CounterState {
 	firstCount: number;

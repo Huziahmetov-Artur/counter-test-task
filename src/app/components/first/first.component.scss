@@ -1,4 +1,4 @@
-@import '../../../scss/colors.scss';
+@import '../../../scss/mixins.scss';
 
 .input-container {
 	margin: 30px 0;
@@ -7,13 +7,5 @@
 		margin: 5px;
 	}
 
-	.red {
-		border: 1px solid red;
-		color: $red;
-	}
-
-	.blue {
-		border: 1px solid blue;
-		color: $blue;
-	}
+	@include input-colors();
 }

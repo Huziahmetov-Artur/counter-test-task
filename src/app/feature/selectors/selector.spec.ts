@@ -1,4 +1,4 @@
-import * as fromMyReducers from './';
+import * as fromMyReducers from './selector.counter';
 
 describe('selectors', () => {
 	it('getFirstCount should return -5', () => {

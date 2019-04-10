@@ -1,5 +1,5 @@
 import { ActionReducerMap } from '@ngrx/store';
-import * as fromCounter from './counter';
+import * as fromCounter from './counter.reducer';
 
 export interface AppState {
 	counter: fromCounter.CounterState;

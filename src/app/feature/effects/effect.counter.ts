@@ -5,8 +5,8 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-import { CounterActionTypes, Decrement, Increment } from '../actions';
-import { AppState } from './../reducers';
+import { CounterActionTypes, Decrement, Increment } from '../actions/counter.actions';
+import { AppState } from '../reducers';
 
 @Injectable()
 export class CounterEffects {
